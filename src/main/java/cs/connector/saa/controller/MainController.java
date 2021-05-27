@@ -21,7 +21,7 @@ public class MainController {
 	int min = 10;
 	int max = 31;
 
-	@GetMapping("/saa/student")
+	@GetMapping("/student")
 	public SAAStudent getSAAStudent(@RequestParam String fiscalCode) {
 		String id = RandomStringUtils.randomNumeric(8);
 		SAAStudent s = new SAAStudent();
@@ -36,7 +36,7 @@ public class MainController {
 		return s;
 	}
 	
-	@GetMapping("/saa/exam")
+	@GetMapping("/exam")
 	public List<SAAExam> getSAAExam(@RequestParam String fiscalCode) {
 		List<SAAExam> list = new ArrayList<>();
 		for(int i=0; i<2; i++) {
@@ -62,7 +62,7 @@ public class MainController {
 		return list;
 	}
 	
-	@GetMapping("/saa/stage")
+	@GetMapping("/stage")
 	public List<SAAStage> getSAAStage(@RequestParam String fiscalCode) {
 		List<SAAStage> list = new ArrayList<>();
 		SAAStage s = new SAAStage();
@@ -80,7 +80,7 @@ public class MainController {
 		return list;
 	}
 	
-	@GetMapping("/saa/institute")
+	@GetMapping("/institute")
 	public SAAInstitute getSAAInstitute(@RequestParam String extId) {
 		SAAInstitute i = new SAAInstitute();
 		i.setExtId(extId);
