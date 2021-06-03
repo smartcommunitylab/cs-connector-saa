@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import cs.connector.saa.dto.SAACompany;
 import cs.connector.saa.dto.SAACompetence;
 import cs.connector.saa.dto.SAAExam;
 import cs.connector.saa.dto.SAAInstitute;
@@ -70,10 +71,11 @@ public class MainController {
 		s.setOrigin("INFOTNISTRUZIONE");
 		s.setDateFrom("2021-04-" + giorno);
 		s.setDateTo("2021-04-" + giorno);
-		s.setType("Terzo anno");
+		s.setType("Tirocinio estivo");
 		s.setTitle("3° OP. CARPENTERIA IN LEGNO - PRIMO PERIODO");
 		s.setDuration("80");
 		s.setLocation("EFFEFFE RESTAURI srl - LOCALITA' AL PONTE  38082 BORGO CHIESE (TN)");
+		s.setCompanyRef("azienda1");
 		list.add(s);
 		return list;
 	}
@@ -88,6 +90,21 @@ public class MainController {
 		i.setEmail("email1");
 		i.setPec("pec1");
 		return i;
+	}
+	
+	@GetMapping("/company")
+	public SAACompany getSAACompany(@RequestParam String extId) {
+		SAACompany c = new SAACompany();
+		c.setExtId(extId);
+		c.setOrigin("INFOTNISTRUZIONE");
+		c.setAddress("indirizzo1");
+		c.setEmail("email1");
+		c.setName("campany1");
+		c.setPartita_iva("111222333");
+		c.setPec("pec1");
+		c.setPhone("phone1");
+		c.setIdTipoAzienda(10);
+		return c;
 	}
 	
 	private SAACompetence getCompetence() {
