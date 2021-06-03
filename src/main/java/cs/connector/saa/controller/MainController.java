@@ -47,16 +47,14 @@ public class MainController {
 			e.setExtId(id);
 			e.setDateFrom("2021-04-" + giorno);
 			e.setDateTo("2021-04-" + giorno);
-			e.setQualification("qualifica");
+			e.setQualification("Operatore elettrico");
 			e.setSchoolYear("2020-21");
 			e.setType("ESAME DI STATO CONCLUSIVO DEL PRIMO CICLO");
 			e.setInstituteRef("istituto1");
-			SAACompetence comp = new SAACompetence();
-			comp.setUri("http://data.europa.eu/esco/skill/09638218-695c-44c7-bac3-26b45a2ae418");
-			comp.setConcentType("KnowledgeSkillCompetence");
-			comp.getPreferredLabel().put("it", "svolgere i patch test");
-			comp.getPreferredLabel().put("en", "conduct patch testing");
-			e.getCompetences().add(comp);
+			e.setHonour(true);
+			e.setGrade(String.valueOf(random.nextInt(60) + 36));
+			e.setExternalCandidate(false);
+			e.setPositiveResult(true);
 			list.add(e);
 		}
 		return list;
@@ -90,6 +88,15 @@ public class MainController {
 		i.setEmail("email1");
 		i.setPec("pec1");
 		return i;
+	}
+	
+	private SAACompetence getCompetence() {
+		SAACompetence comp = new SAACompetence();
+		comp.setUri("http://data.europa.eu/esco/skill/09638218-695c-44c7-bac3-26b45a2ae418");
+		comp.setConcentType("KnowledgeSkillCompetence");
+		comp.getPreferredLabel().put("it", "svolgere i patch test");
+		comp.getPreferredLabel().put("en", "conduct patch testing");
+		return comp;
 	}
 
 }
