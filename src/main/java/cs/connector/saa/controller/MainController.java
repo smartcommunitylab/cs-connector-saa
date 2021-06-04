@@ -14,6 +14,7 @@ import cs.connector.saa.dto.SAACompany;
 import cs.connector.saa.dto.SAACompetence;
 import cs.connector.saa.dto.SAAExam;
 import cs.connector.saa.dto.SAAInstitute;
+import cs.connector.saa.dto.SAAMobility;
 import cs.connector.saa.dto.SAAStage;
 import cs.connector.saa.dto.SAAStudent;
 
@@ -85,10 +86,12 @@ public class MainController {
 	public List<SAACertification> getSAACertification(@RequestParam String fiscalCode) {
 		List<SAACertification> list = new ArrayList<>();
 		SAACertification cert = new SAACertification();
-		String id = fiscalCode + "_stage_1";
+		String id = fiscalCode + "_cert_1";
 		int giorno = random.nextInt(max - min) + min;
 		cert.setExtId(id);
 		cert.setOrigin("INFOTNISTRUZIONE");
+		cert.setTitle("titolo");
+		cert.setDescription("descrizione");
 		cert.setDateFrom("2021-04-" + giorno);
 		cert.setDateTo("2021-04-" + giorno);
 		cert.setDateCertification("2021-04-" + giorno);
@@ -101,6 +104,28 @@ public class MainController {
 		cert.setType("LANG");
 		cert.setCompanyRef("azienda1");
 		return list;
+	}
+	
+	@GetMapping("/mobility")
+	public List<SAAMobility> getSAAMobility(@RequestParam String fiscalCode) {
+		List<SAAMobility> list = new ArrayList<>();
+		SAAMobility mob = new SAAMobility();
+		String id = fiscalCode + "_mobility_1";
+		int giorno = random.nextInt(max - min) + min;
+		mob.setExtId(id);
+		mob.setOrigin("INFOTNISTRUZIONE");
+		mob.setTitle("titolo");	
+		mob.setDescription("descrizione");
+		mob.setDateFrom("2021-04-" + giorno);
+		mob.setDateTo("2021-04-" + giorno);
+		mob.setContact("referente1");
+		mob.setDuration("15 gg");
+		mob.setLocation("indirizzo");
+		mob.setType("extrascolastico");
+		mob.setCompanyRef("azienda1");
+		
+		return list;
+		
 	}
 	
 	@GetMapping("/institute")
