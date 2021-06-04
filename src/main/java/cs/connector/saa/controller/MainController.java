@@ -123,9 +123,7 @@ public class MainController {
 		mob.setLocation("indirizzo");
 		mob.setType("extrascolastico");
 		mob.setCompanyRef("azienda1");
-		
 		return list;
-		
 	}
 	
 	@GetMapping("/institute")
