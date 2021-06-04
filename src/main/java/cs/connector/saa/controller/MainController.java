@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import cs.connector.saa.dto.SAACertification;
 import cs.connector.saa.dto.SAACompany;
 import cs.connector.saa.dto.SAACompetence;
 import cs.connector.saa.dto.SAAExam;
@@ -80,6 +81,28 @@ public class MainController {
 		return list;
 	}
 	
+	@GetMapping("/certification")
+	public List<SAACertification> getSAACertification(@RequestParam String fiscalCode) {
+		List<SAACertification> list = new ArrayList<>();
+		SAACertification cert = new SAACertification();
+		String id = fiscalCode + "_stage_1";
+		int giorno = random.nextInt(max - min) + min;
+		cert.setExtId(id);
+		cert.setOrigin("INFOTNISTRUZIONE");
+		cert.setDateFrom("2021-04-" + giorno);
+		cert.setDateTo("2021-04-" + giorno);
+		cert.setDateCertification("2021-04-" + giorno);
+		cert.setContact("referente1");
+		cert.setCertifier("ente certificatore");
+		cert.setDuration("3 gg");
+		cert.setLanguage("en");
+		cert.setJudgment("voto, giudizio");
+		cert.setLocation("indirizzo");
+		cert.setType("LANG");
+		cert.setCompanyRef("azienda1");
+		return list;
+	}
+	
 	@GetMapping("/institute")
 	public SAAInstitute getSAAInstitute(@RequestParam String extId) {
 		SAAInstitute i = new SAAInstitute();
@@ -107,6 +130,7 @@ public class MainController {
 		return c;
 	}
 	
+	@SuppressWarnings("unused")
 	private SAACompetence getCompetence() {
 		SAACompetence comp = new SAACompetence();
 		comp.setUri("http://data.europa.eu/esco/skill/09638218-695c-44c7-bac3-26b45a2ae418");
