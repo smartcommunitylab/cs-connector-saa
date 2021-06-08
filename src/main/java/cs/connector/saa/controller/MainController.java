@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import cs.connector.saa.dto.SAACertification;
 import cs.connector.saa.dto.SAACompany;
 import cs.connector.saa.dto.SAACompetence;
+import cs.connector.saa.dto.SAAEnrollment;
 import cs.connector.saa.dto.SAAExam;
 import cs.connector.saa.dto.SAAInstitute;
 import cs.connector.saa.dto.SAAMobility;
@@ -103,6 +104,7 @@ public class MainController {
 		cert.setLocation("indirizzo");
 		cert.setType("LANG");
 		cert.setCompanyRef("azienda1");
+		list.add(cert);
 		return list;
 	}
 	
@@ -123,6 +125,24 @@ public class MainController {
 		mob.setLocation("indirizzo");
 		mob.setType("extrascolastico");
 		mob.setCompanyRef("azienda1");
+		list.add(mob);
+		return list;
+	}
+	
+	public List<SAAEnrollment> getSAAEnrollment(@RequestParam String fiscalCode) {
+		List<SAAEnrollment> list = new ArrayList<>();
+		SAAEnrollment enrol = new SAAEnrollment();
+		String id = fiscalCode + "_enrollment_1";
+		int giorno = random.nextInt(max - min) + min;
+		enrol.setExtId(id);
+		enrol.setOrigin("INFOTNISTRUZIONE");
+		enrol.setCourse("CARPENTERIA");
+		enrol.setSchoolYear("2020-21");
+		enrol.setClassroom("3C");
+		enrol.setDateFrom("2021-04-" + giorno);
+		enrol.setDateTo("2021-04-" + giorno);
+		enrol.setInstituteRef("istituto1");
+		list.add(enrol);
 		return list;
 	}
 	
