@@ -129,6 +129,7 @@ public class MainController {
 		return list;
 	}
 	
+	@GetMapping("/enrollment")
 	public List<SAAEnrollment> getSAAEnrollment(@RequestParam String fiscalCode) {
 		List<SAAEnrollment> list = new ArrayList<>();
 		SAAEnrollment enrol = new SAAEnrollment();
