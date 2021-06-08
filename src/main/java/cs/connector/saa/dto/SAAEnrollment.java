@@ -1,8 +1,5 @@
 package cs.connector.saa.dto;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class SAAEnrollment {
 	private String extId;
 	private String origin;
@@ -12,7 +9,6 @@ public class SAAEnrollment {
 	private String schoolYear;
 	private String classroom;
 	private String instituteRef;
-	private List<SAACompetence> competences = new ArrayList<>();
 	
 	public String getExtId() {
 		return extId;
@@ -55,12 +51,6 @@ public class SAAEnrollment {
 	}
 	public void setInstituteRef(String instituteRef) {
 		this.instituteRef = instituteRef;
-	}
-	public List<SAACompetence> getCompetences() {
-		return competences;
-	}
-	public void setCompetences(List<SAACompetence> competences) {
-		this.competences = competences;
 	}
 	public String getClassroom() {
 		return classroom;
