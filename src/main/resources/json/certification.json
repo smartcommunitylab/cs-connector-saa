@@ -1,0 +1,18 @@
+{
+  "extId": "cert111",
+  "origin": "INFOTNISTRUZIONE",
+  "certifier": "CLM BELL",
+  "contact": "insegnante1",
+  "dateFrom": "2021-04-05",
+  "dateTo": "2031-04-05",
+  "description": "",
+  "duration": "",
+  "judgment": "80",
+  "location": "indirizzo",
+  "title": "Certificazione B1",
+  "type": "LANG",
+  "dateCertification": "2021-04-05",
+  "language": "EN",
+  "judgmentmax": "100",
+  "companyRef": "azienda1"
+}

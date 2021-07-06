@@ -1,0 +1,14 @@
+{
+  "extId": "exam111",
+  "origin": "INFOTNISTRUZIONE",
+  "dateFrom": "2021-04-24",
+  "dateTo": "2021-04-24",
+  "qualification": "Operatore elettrico",
+  "schoolYear": "2020-21",
+  "type": "ESAME DI STATO CONCLUSIVO DEL PRIMO CICLO",
+  "instituteRef": "istituto1",
+  "honour": true,
+  "grade": "96",
+  "externalCandidate": false,
+  "positiveResult": true
+}

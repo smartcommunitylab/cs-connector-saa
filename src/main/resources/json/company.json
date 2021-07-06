@@ -1,0 +1,12 @@
+{
+  "extId": "azienda1",
+  "origin": "INFOTNISTRUZIONE",
+  "address": "indirizzo1",
+  "description": "Azienda di servizi e poi chissà che altro",
+  "email": "info@azienda1.it",
+  "name": "Azienda1",
+  "partita_iva": "111222333",
+  "pec": "pec@azienda1.it",
+  "phone": "0461.7890546",
+  "idTipoAzienda": 30
+}

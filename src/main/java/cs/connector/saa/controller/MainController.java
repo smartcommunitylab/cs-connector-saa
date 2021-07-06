@@ -1,10 +1,18 @@
 package cs.connector.saa.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
-import org.apache.commons.lang3.RandomStringUtils;
+import javax.annotation.PostConstruct;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import org.springframework.core.io.DefaultResourceLoader;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,154 +32,99 @@ public class MainController {
 	Random random = new Random();
 	int min = 10;
 	int max = 31;
+	Map<String, Object> dataMap = new HashMap<>();
+
+	@PostConstruct
+	public void init() {
+		ObjectMapper objectMapper = new ObjectMapper();
+		ResourceLoader resourceLoader = new DefaultResourceLoader();
+		Resource resource = null;
+		try {
+			resource = resourceLoader.getResource("classpath:json/student.json");
+			SAAStudent student = objectMapper.readValue(resource.getInputStream(), SAAStudent.class);
+			dataMap.put("student", student);
+
+			resource = resourceLoader.getResource("classpath:json/exam.json");
+			SAAExam exam = objectMapper.readValue(resource.getInputStream(), SAAExam.class);
+			dataMap.put("exam", exam);
+
+			resource = resourceLoader.getResource("classpath:json/stage.json");
+			SAAStage stage = objectMapper.readValue(resource.getInputStream(), SAAStage.class);
+			dataMap.put("stage", stage);
+
+			resource = resourceLoader.getResource("classpath:json/certification.json");
+			SAACertification certification = objectMapper.readValue(resource.getInputStream(), SAACertification.class);
+			dataMap.put("certification", certification);
+
+			resource = resourceLoader.getResource("classpath:json/mobility.json");
+			SAAMobility mobility = objectMapper.readValue(resource.getInputStream(), SAAMobility.class);
+			dataMap.put("mobility", mobility);
+
+			resource = resourceLoader.getResource("classpath:json/enrollment.json");
+			SAAEnrollment enrollment = objectMapper.readValue(resource.getInputStream(), SAAEnrollment.class);
+			dataMap.put("enrollment", enrollment);
+
+			resource = resourceLoader.getResource("classpath:json/institute.json");
+			SAAInstitute institute = objectMapper.readValue(resource.getInputStream(), SAAInstitute.class);
+			dataMap.put("institute", institute);
+
+			resource = resourceLoader.getResource("classpath:json/company.json");
+			SAACompany company = objectMapper.readValue(resource.getInputStream(), SAACompany.class);
+			dataMap.put("company", company);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
 
 	@GetMapping("/student")
 	public SAAStudent getSAAStudent(@RequestParam String fiscalCode) {
-		String id = RandomStringUtils.randomNumeric(8);
-		SAAStudent s = new SAAStudent();
-		s.setOrigin("INFOTNISTRUZIONE");
-		s.setExtId(id);
-		s.setCf(fiscalCode);
-		s.setName("Nome " + id);
-		s.setSurname("Cognome " + id);
-		s.setEmail("email " + id);
-		s.setPhone("telefono " + id);
-		s.setAddress("indirizzo " + id);
-		return s;
+		return (SAAStudent) dataMap.get("student");
 	}
 	
 	@GetMapping("/exam")
 	public List<SAAExam> getSAAExam(@RequestParam String fiscalCode) {
 		List<SAAExam> list = new ArrayList<>();
-		for(int i=0; i<2; i++) {
-			String id = fiscalCode + "_exam_" + i;
-			int giorno = random.nextInt(max - min) + min;
-			SAAExam e = new SAAExam();
-			e.setOrigin("INFOTNISTRUZIONE");
-			e.setExtId(id);
-			e.setDateFrom("2021-04-" + giorno);
-			e.setDateTo("2021-04-" + giorno);
-			e.setQualification("Operatore elettrico");
-			e.setSchoolYear("2020-21");
-			e.setType("ESAME DI STATO CONCLUSIVO DEL PRIMO CICLO");
-			e.setInstituteRef("istituto1");
-			e.setHonour(true);
-			e.setGrade(String.valueOf(random.nextInt(60) + 36));
-			e.setExternalCandidate(false);
-			e.setPositiveResult(true);
-			list.add(e);
-		}
+		list.add((SAAExam) dataMap.get("exam"));
 		return list;
 	}
 	
 	@GetMapping("/stage")
 	public List<SAAStage> getSAAStage(@RequestParam String fiscalCode) {
 		List<SAAStage> list = new ArrayList<>();
-		SAAStage s = new SAAStage();
-		String id = fiscalCode + "_stage_1";
-		int giorno = random.nextInt(max - min) + min;
-		s.setExtId(id);
-		s.setOrigin("INFOTNISTRUZIONE");
-		s.setDateFrom("2021-04-" + giorno);
-		s.setDateTo("2021-04-" + giorno);
-		s.setType("Tirocinio estivo");
-		s.setTitle("3° OP. CARPENTERIA IN LEGNO - PRIMO PERIODO");
-		s.setDuration("80");
-		s.setLocation("EFFEFFE RESTAURI srl - LOCALITA' AL PONTE  38082 BORGO CHIESE (TN)");
-		s.setCompanyRef("azienda1");
-		list.add(s);
+		list.add((SAAStage) dataMap.get("stage"));
 		return list;
 	}
 	
 	@GetMapping("/certification")
 	public List<SAACertification> getSAACertification(@RequestParam String fiscalCode) {
 		List<SAACertification> list = new ArrayList<>();
-		SAACertification cert = new SAACertification();
-		String id = fiscalCode + "_cert_1";
-		int giorno = random.nextInt(max - min) + min;
-		cert.setExtId(id);
-		cert.setOrigin("INFOTNISTRUZIONE");
-		cert.setTitle("titolo");
-		cert.setDescription("descrizione");
-		cert.setDateFrom("2021-04-" + giorno);
-		cert.setDateTo("2021-04-" + giorno);
-		cert.setDateCertification("2021-04-" + giorno);
-		cert.setContact("referente1");
-		cert.setCertifier("ente certificatore");
-		cert.setDuration("3 gg");
-		cert.setLanguage("en");
-		cert.setJudgment("voto, giudizio");
-		cert.setLocation("indirizzo");
-		cert.setType("LANG");
-		cert.setCompanyRef("azienda1");
-		list.add(cert);
+		list.add((SAACertification) dataMap.get("certification"));
 		return list;
 	}
 	
 	@GetMapping("/mobility")
 	public List<SAAMobility> getSAAMobility(@RequestParam String fiscalCode) {
 		List<SAAMobility> list = new ArrayList<>();
-		SAAMobility mob = new SAAMobility();
-		String id = fiscalCode + "_mobility_1";
-		int giorno = random.nextInt(max - min) + min;
-		mob.setExtId(id);
-		mob.setOrigin("INFOTNISTRUZIONE");
-		mob.setTitle("titolo");	
-		mob.setDescription("descrizione");
-		mob.setDateFrom("2021-04-" + giorno);
-		mob.setDateTo("2021-04-" + giorno);
-		mob.setContact("referente1");
-		mob.setDuration("15 gg");
-		mob.setLocation("indirizzo");
-		mob.setType("extrascolastico");
-		mob.setCompanyRef("azienda1");
-		list.add(mob);
+		list.add((SAAMobility) dataMap.get("mobility"));
 		return list;
 	}
 	
 	@GetMapping("/enrollment")
 	public List<SAAEnrollment> getSAAEnrollment(@RequestParam String fiscalCode) {
 		List<SAAEnrollment> list = new ArrayList<>();
-		SAAEnrollment enrol = new SAAEnrollment();
-		String id = fiscalCode + "_enrollment_1";
-		int giorno = random.nextInt(max - min) + min;
-		enrol.setExtId(id);
-		enrol.setOrigin("INFOTNISTRUZIONE");
-		enrol.setCourse("CARPENTERIA");
-		enrol.setSchoolYear("2020-21");
-		enrol.setClassroom("3C");
-		enrol.setDateFrom("2021-04-" + giorno);
-		enrol.setDateTo("2021-04-" + giorno);
-		enrol.setInstituteRef("istituto1");
-		list.add(enrol);
+		list.add((SAAEnrollment) dataMap.get("enrollment"));
 		return list;
 	}
 	
 	@GetMapping("/institute")
 	public SAAInstitute getSAAInstitute(@RequestParam String extId) {
-		SAAInstitute i = new SAAInstitute();
-		i.setExtId(extId);
-		i.setOrigin("INFOTNISTRUZIONE");
-		i.setName("istituto1");
-		i.setAddress("indirizzo1");
-		i.setEmail("email1");
-		i.setPec("pec1");
-		return i;
+		return (SAAInstitute) dataMap.get("institute");
 	}
 	
 	@GetMapping("/company")
 	public SAACompany getSAACompany(@RequestParam String extId) {
-		SAACompany c = new SAACompany();
-		c.setExtId(extId);
-		c.setOrigin("INFOTNISTRUZIONE");
-		c.setAddress("indirizzo1");
-		c.setEmail("email1");
-		c.setName("campany1");
-		c.setPartita_iva("111222333");
-		c.setPec("pec1");
-		c.setPhone("phone1");
-		c.setIdTipoAzienda(10);
-		return c;
+		return (SAACompany) dataMap.get("company");
 	}
 	
 	@SuppressWarnings("unused")
