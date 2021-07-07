@@ -7,5 +7,29 @@
   "location": "EFFEFFE RESTAURI srl - LOCALITA' AL PONTE  38082 BORGO CHIESE (TN)",
   "title": "3° OP. CARPENTERIA IN LEGNO - PRIMO PERIODO",
   "type": "Tirocinio estivo",
-  "companyRef": "azienda1"
+  "companyRef": "azienda1",
+  "competences": [
+    {
+      "uri": "http://data.europa.eu/esco/skill/adf661fe-9429-4094-8671-ca69fb72ad02",
+      "concentType": "KnowledgeSkillCompetence",
+      "preferredLabel": {
+        "it": "pulire la superficie del legno"
+      },
+      "altLabel": {},
+      "description": {
+        "it": "Utilizzare varie tecniche su una superficie in legno per garantire che sia esente da polvere, segatura, grasso, macchie e altri contaminanti."
+      }
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/86df7af2-f9f3-4c06-a500-7f1fba9e78fe",
+      "concentType": "KnowledgeSkillCompetence",
+      "preferredLabel": {
+        "it": "rispettare le procedure in materia di salute e sicurezza nell’edilizia"
+      },
+      "altLabel": {},
+      "description": {
+        "it": "Applicare le pertinenti procedure in materia di salute e sicurezza nel settore della costruzione al fine di prevenire incidenti, inquinamento e altri rischi."
+      }
+    }
+  ]
 }
