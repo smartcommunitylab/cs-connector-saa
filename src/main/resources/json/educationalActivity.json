@@ -1,6 +1,6 @@
 [
 {
-	"entityType": "educatinalActivity",
+	"entityType": "educationalActivity",
 	"views": {
 		"exp": {
 			"attributes": {
@@ -9,7 +9,7 @@
 				"title": "3° OP. CARPENTERIA IN LEGNO - PRIMO PERIODO"
 			}
 		},
-		"educatinalActivity": {
+		"educationalActivity": {
 			"attributes": {
 				"duration": "70",
 				"address": {
