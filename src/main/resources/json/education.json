@@ -1,0 +1,74 @@
+[
+{
+	"entityType": "education",
+	"views": {
+		"exp": {
+			"attributes": {
+				"dateFrom": "2016-09-01",
+				"dateTo": "2021-08-31",
+				"organisation": {
+					"name": "ISTITUTO TECNICO TECNOLOGICO 'G. Marconi' - ROVERETO"
+				},
+				"title": "Istituto Tecnico G. Marconi"
+			}
+		},
+		"education": {
+			"attributes": {
+				"qualification": "ESAME DI STATO CONCLUSIVO DEL SECONDO CICLO: Perito Elettronico",
+				"honour": true,
+				"grade": "100/100",
+				"type": "Scuola secondaria",
+				"dateExam": "2021-04-24"
+			}
+		},
+		"saa_1": {
+			"identity": {
+				"extUri": "exam111",
+				"origin": "INFOTNISTRUZIONE"
+			},
+			"attributes": {
+				"qualification": "Operatore elettrico",
+				"honour": true,
+				"instituteRef": "istituto1",
+				"grade": "100",
+				"dateTo": "2021-04-24",
+				"positiveResult": true,
+				"schoolYear": "2020-21",
+				"extId": "exam111",
+				"dateFrom": "2021-04-24",
+				"type": "ESAME DI STATO CONCLUSIVO DEL PRIMO CICLO",
+				"externalCandidate": false
+			}
+		}
+	}
+},
+{
+	"entityType": "education",
+	"views": {
+		"exp": {
+			"attributes": {
+				"dateFrom": "2015-09-01",
+				"dateTo": "2016-08-31",
+				"organisation": {
+					"name": "LICEO 'B. Russell' - CLES"
+				},
+				"title": "Liceo B. Russell"
+			}
+		},
+		"education": {
+			"attributes": {
+				"type": "Scuola secondaria"
+			}
+		},
+		"saa_1": {
+			"identity": {
+				"extUri": "exam222",
+				"origin": "INFOTNISTRUZIONE"
+			},
+			"attributes": {
+				"extId": "exam222"
+			}
+		}
+	}
+}
+]

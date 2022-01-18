@@ -1,18 +1,53 @@
-{
-  "extId": "cert111",
-  "origin": "INFOTNISTRUZIONE",
-  "certifier": "CLM BELL",
-  "contact": "insegnante1",
-  "dateFrom": "2021-04-05",
-  "dateTo": "2031-04-05",
-  "description": "Certificazione linguistica inglese livello B1",
-  "duration": "",
-  "judgment": "80",
-  "location": "indirizzo",
-  "title": "Certificazione B1",
-  "type": "LANG",
-  "dateCertification": "2021-04-05",
-  "language": "EN",
-  "judgmentmax": "100",
-  "companyRef": "azienda1"
-}
+[
+	{
+		"entityType": "certification",
+		"views": {
+			"saa_1": {
+				"identity": {
+					"extUri": "cert111",
+					"origin": "INFOTNISTRUZIONE"
+				},
+				"attributes": {
+					"judgmentmax": "100",
+					"certifier": "CLM BELL",
+					"description": "Certificazione linguistica inglese livello B1",
+					"language": "EN",
+					"dateFrom": "2021-04-05",
+					"title": "Certificazione B1",
+					"type": "LANG",
+					"dateCertification": "2021-04-05",
+					"companyRef": "azienda1",
+					"duration": "",
+					"judgment": "80",
+					"contact": "insegnante1",
+					"dateTo": "2031-04-05",
+					"location": "indirizzo",
+					"extId": "cert111"
+				}
+			},
+			"exp": {
+				"attributes": {
+					"dateTo": "2021-04-05",
+					"dateFrom": "2021-04-05",
+					"validityFrom": "2021-04-05",
+					"validityTo": "2031-04-05",
+					"title": "Certificazione B1",
+					"organisation": {
+						"name": "CLM BELL"
+					}
+				}
+			},
+			"certification": {
+				"attributes": {
+					"address": {
+						"extendedAddress": "indirizzo"
+					},
+					"grade": "80/100",
+					"level": "B1",
+					"language": "EN",
+					"type": "LANG"
+				}
+			}
+		}
+	}
+]

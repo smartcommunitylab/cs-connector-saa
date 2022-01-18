@@ -1,140 +1,92 @@
 package cs.connector.saa.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
-
-import javax.annotation.PostConstruct;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import cs.connector.saa.dto.SAACertification;
-import cs.connector.saa.dto.SAACompany;
-import cs.connector.saa.dto.SAACompetence;
-import cs.connector.saa.dto.SAAEnrollment;
-import cs.connector.saa.dto.SAAExam;
-import cs.connector.saa.dto.SAAInstitute;
-import cs.connector.saa.dto.SAAMobility;
-import cs.connector.saa.dto.SAAStage;
-import cs.connector.saa.dto.SAAStudent;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 public class MainController {
-	Random random = new Random();
-	int min = 10;
-	int max = 31;
-	Map<String, Object> dataMap = new HashMap<>();
-
-	@PostConstruct
-	public void init() {
+	
+	@GetMapping("/student")
+	public ResponseEntity<Map<String, Object>> getSAAStudent(
+			@RequestParam String fiscalCode,
+			@RequestParam String viewName) {
 		ObjectMapper objectMapper = new ObjectMapper();
 		ResourceLoader resourceLoader = new DefaultResourceLoader();
 		Resource resource = null;
 		try {
 			resource = resourceLoader.getResource("classpath:json/student.json");
-			SAAStudent student = objectMapper.readValue(resource.getInputStream(), SAAStudent.class);
-			dataMap.put("student", student);
-
-			resource = resourceLoader.getResource("classpath:json/exam.json");
-			SAAExam exam = objectMapper.readValue(resource.getInputStream(), SAAExam.class);
-			dataMap.put("exam", exam);
-
-			resource = resourceLoader.getResource("classpath:json/stage.json");
-			SAAStage stage = objectMapper.readValue(resource.getInputStream(), SAAStage.class);
-			dataMap.put("stage", stage);
-
-			resource = resourceLoader.getResource("classpath:json/certification.json");
-			SAACertification certification = objectMapper.readValue(resource.getInputStream(), SAACertification.class);
-			dataMap.put("certification", certification);
-
-			resource = resourceLoader.getResource("classpath:json/mobility.json");
-			SAAMobility mobility = objectMapper.readValue(resource.getInputStream(), SAAMobility.class);
-			dataMap.put("mobility", mobility);
-
-			resource = resourceLoader.getResource("classpath:json/enrollment.json");
-			SAAEnrollment enrollment = objectMapper.readValue(resource.getInputStream(), SAAEnrollment.class);
-			dataMap.put("enrollment", enrollment);
-
-			resource = resourceLoader.getResource("classpath:json/institute.json");
-			SAAInstitute institute = objectMapper.readValue(resource.getInputStream(), SAAInstitute.class);
-			dataMap.put("institute", institute);
-
-			resource = resourceLoader.getResource("classpath:json/company.json");
-			SAACompany company = objectMapper.readValue(resource.getInputStream(), SAACompany.class);
-			dataMap.put("company", company);
+			Map<String,Object> map = objectMapper.readValue(resource.getInputStream(), new TypeReference<Map<String, Object>>() {});
+			return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
+			return new ResponseEntity<Map<String, Object>>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-
-	}
-
-	@GetMapping("/student")
-	public SAAStudent getSAAStudent(@RequestParam String fiscalCode) {
-		return (SAAStudent) dataMap.get("student");
 	}
 	
-	@GetMapping("/exam")
-	public List<SAAExam> getSAAExam(@RequestParam String fiscalCode) {
-		List<SAAExam> list = new ArrayList<>();
-		list.add((SAAExam) dataMap.get("exam"));
-		return list;
+	@GetMapping("/educatinalActivity")
+	public ResponseEntity<List<Map<String, Object>>> getSAAEducatinalActivity(
+			@RequestParam String fiscalCode,
+			@RequestParam String entityType, 
+			@RequestParam String viewName) {
+		ObjectMapper objectMapper = new ObjectMapper();
+		ResourceLoader resourceLoader = new DefaultResourceLoader();
+		Resource resource = null;
+		try {
+			resource = resourceLoader.getResource("classpath:json/educatinalActivity.json");
+			List<Map<String,Object>> list = objectMapper.readValue(resource.getInputStream(), new TypeReference<List<Map<String, Object>>>() {});
+			return new ResponseEntity<List<Map<String, Object>>>(list, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<List<Map<String, Object>>>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 	
-	@GetMapping("/stage")
-	public List<SAAStage> getSAAStage(@RequestParam String fiscalCode) {
-		List<SAAStage> list = new ArrayList<>();
-		list.add((SAAStage) dataMap.get("stage"));
-		return list;
+	@GetMapping("/education")
+	public ResponseEntity<List<Map<String, Object>>> getSAAEducation(
+			@RequestParam String fiscalCode,
+			@RequestParam String entityType, 
+			@RequestParam String viewName) {
+		ObjectMapper objectMapper = new ObjectMapper();
+		ResourceLoader resourceLoader = new DefaultResourceLoader();
+		Resource resource = null;
+		try {
+			resource = resourceLoader.getResource("classpath:json/education.json");
+			List<Map<String,Object>> list = objectMapper.readValue(resource.getInputStream(), new TypeReference<List<Map<String, Object>>>() {});
+			return new ResponseEntity<List<Map<String, Object>>>(list, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<List<Map<String, Object>>>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 	
 	@GetMapping("/certification")
-	public List<SAACertification> getSAACertification(@RequestParam String fiscalCode) {
-		List<SAACertification> list = new ArrayList<>();
-		list.add((SAACertification) dataMap.get("certification"));
-		return list;
+	public ResponseEntity<List<Map<String, Object>>> getSAACertification(
+			@RequestParam String fiscalCode,
+			@RequestParam String entityType, 
+			@RequestParam String viewName) {
+		ObjectMapper objectMapper = new ObjectMapper();
+		ResourceLoader resourceLoader = new DefaultResourceLoader();
+		Resource resource = null;
+		try {
+			resource = resourceLoader.getResource("classpath:json/certification.json");
+			List<Map<String,Object>> list = objectMapper.readValue(resource.getInputStream(), new TypeReference<List<Map<String, Object>>>() {});
+			return new ResponseEntity<List<Map<String, Object>>>(list, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<List<Map<String, Object>>>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 	
-	@GetMapping("/mobility")
-	public List<SAAMobility> getSAAMobility(@RequestParam String fiscalCode) {
-		List<SAAMobility> list = new ArrayList<>();
-		list.add((SAAMobility) dataMap.get("mobility"));
-		return list;
-	}
-	
-	@GetMapping("/enrollment")
-	public List<SAAEnrollment> getSAAEnrollment(@RequestParam String fiscalCode) {
-		List<SAAEnrollment> list = new ArrayList<>();
-		list.add((SAAEnrollment) dataMap.get("enrollment"));
-		return list;
-	}
-	
-	@GetMapping("/institute")
-	public SAAInstitute getSAAInstitute(@RequestParam String extId) {
-		return (SAAInstitute) dataMap.get("institute");
-	}
-	
-	@GetMapping("/company")
-	public SAACompany getSAACompany(@RequestParam String extId) {
-		return (SAACompany) dataMap.get("company");
-	}
-	
-	@SuppressWarnings("unused")
-	private SAACompetence getCompetence() {
-		SAACompetence comp = new SAACompetence();
-		comp.setUri("http://data.europa.eu/esco/skill/09638218-695c-44c7-bac3-26b45a2ae418");
-		comp.setConcentType("KnowledgeSkillCompetence");
-		comp.getPreferredLabel().put("it", "svolgere i patch test");
-		comp.getPreferredLabel().put("en", "conduct patch testing");
-		return comp;
-	}
-
 }

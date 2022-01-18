@@ -1,12 +1,34 @@
 {
-  "extId": "s111",
-  "origin": "INFOTNISTRUZIONE",
-  "name": "Nome1",
-  "surname": "Cognome1",
-  "address": "indirizzo",
-  "birthdate": "01-01-1983",
-  "cf": "111222",
-  "email": "nome.cognome@test.it",
-  "mobilePhone": "325.2367908",
-  "phone": "0461.123456"
+	"fiscalCode": "111222",
+	"views": {
+		"person": {
+			"attributes": {
+				"address": {
+					"extendedAddress": "indirizzo"
+				},
+				"birthdate": "01-01-1983",
+				"phone": "0461.123456 / 325.2367908",
+				"surname": "Cognome1",
+				"fiscalCode": "111222",
+				"name": "Nome1",
+				"email": "nome.cognome@test.it"
+			}
+		},
+		"saa_1": {
+			"identity": {
+				"extUri": "s111",
+				"origin": "INFOTNISTRUZIONE"
+			},
+			"attributes": {
+				"address": "indirizzo",
+				"birthdate": "01-01-1983",
+				"cf": "111222",
+				"mobilePhone": "325.2367908",
+				"phone": "0461.123456",
+				"surname": "Cognome1",
+				"name": "Nome1",
+				"email": "nome.cognome@test.it"
+			}
+		}
+	}
 }

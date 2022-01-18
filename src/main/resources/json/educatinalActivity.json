@@ -1,0 +1,45 @@
+[
+{
+	"entityType": "educatinalActivity",
+	"views": {
+		"exp": {
+			"attributes": {
+				"dateTo": "2021-04-13",
+				"dateFrom": "2021-04-13",
+				"title": "3° OP. CARPENTERIA IN LEGNO - PRIMO PERIODO"
+			}
+		},
+		"educatinalActivity": {
+			"attributes": {
+				"duration": "70",
+				"address": {
+					"extendedAddress": "EFFEFFE RESTAURI srl - LOCALITA' AL PONTE  38082 BORGO CHIESE (TN)"
+				},
+				"type": "Tirocinio estivo",
+				"institute": {
+					"name": "ISTITUTO TECNICO TECNOLOGICO 'G. Marconi' - ROVERETO"
+				},
+				"organisation": {
+					"name": "EFFEFFE RESTAURI sr"
+				}
+			}
+		},
+		"saa_1": {
+			"identity": {
+				"extUri": "stage111",
+				"origin": "INFOTNISTRUZIONE"
+			},
+			"attributes": {
+				"duration": "80",
+				"dateTo": "2021-04-24",
+				"location": "EFFEFFE RESTAURI srl - LOCALITA' AL PONTE  38082 BORGO CHIESE (TN)",
+				"extId": "stage111",
+				"dateFrom": "2021-04-04",
+				"title": "3° OP. CARPENTERIA IN LEGNO - PRIMO PERIODO",
+				"type": "Tirocinio estivo",
+				"companyRef": "azienda1"
+			}
+		}
+	}
+}
+]
